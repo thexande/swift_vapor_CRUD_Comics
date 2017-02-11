@@ -1,6 +1,6 @@
 import Vapor
 import VaporPostgreSQL
-
+let postsController = PostController()
 let drop = Droplet()
 drop.preparations.append(Post.self)
 
@@ -12,11 +12,10 @@ do {
 
 
 drop.get { req in
-    return try drop.view.make("welcome", [
-    	"message": drop.localization[req.lang, "welcome", "title"]
-    ])
+    return try drop.view.make("welcome")
 }
 
-drop.resource("posts", PostController())
+
+drop.resource("posts", postsController)
 
 drop.run()
