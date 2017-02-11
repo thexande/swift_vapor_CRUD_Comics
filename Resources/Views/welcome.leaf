@@ -1,15 +1,62 @@
 #extend("base")
+#extend("create_post")
 
-#export("head") {
-	<title>Swift ToDo</title>
-	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/cover.css">
-
-    
+#export("top") {
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Swift ToDo</title>
+	        <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="/styles/cover.css">
+        </head>
+        <body>
+            <script src="/bower/jquery/dist/jquery.min.js"></script>
+            <script src="/bower/tether/dist/js/tether.min.js"></script>
+            <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>        
+            <script src="/js/modal.js"></script>
 }
 
-#export("scripts") {
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
-    <script src="/bower/tether/dist/js/tether.min.js"></script>
-    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+#export("bottom") {
+        </body>
+    </html>
+}
+
+#export("modal_add") {
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/posts/create" method="post">
+            <label for="basic-url">Post Title</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            <br>
+
+            <label for="basic-url">Post Content</label>
+                <div class="input-group">
+                    <textarea class="form-control" name="post_content" id="post_content" cols="30" rows="10"></textarea>
+                </div>
+            <br>
+
+            <label for="basic-url">Post Image URL</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+            <br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save Post</button>
+      </div>
+    </div>
+  </div>
+</div>
 }
