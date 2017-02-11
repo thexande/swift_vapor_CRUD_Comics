@@ -1,14 +1,21 @@
 import Vapor
 import VaporPostgreSQL
+
 let postsController = PostController()
 let drop = Droplet()
-drop.preparations.append(Post.self)
 
 do {
     try drop.addProvider(VaporPostgreSQL.Provider.self)
 } catch {
     assertionFailure("Error adding provider: \(error)")
 }
+
+
+
+drop.preparations.append(Post.self)
+
+
+postsController.addRoutes(drop: drop)
 
 
 drop.get { req in

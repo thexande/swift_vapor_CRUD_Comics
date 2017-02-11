@@ -2,11 +2,18 @@ import Vapor
 import HTTP
 
 final class PostController: ResourceRepresentable {
+    func addRoutes(drop: Droplet) {
+        drop.post("/post/create", handler: create)
+    }
+    
     func index(request: Request) throws -> ResponseRepresentable {
         return try Post.all().makeNode().converted(to: JSON.self)
     }
 
     func create(request: Request) throws -> ResponseRepresentable {
+        let content = request.data["content"]?.string
+        
+        
         var post = try request.post()
         try post.save()
         return post
@@ -54,7 +61,8 @@ final class PostController: ResourceRepresentable {
 
 extension Request {
     func post() throws -> Post {
-        guard let json = json else { throw Abort.badRequest }
-        return try Post(node: json)
+        
+        guard let data = data["content"]?.string else { throw Abort.badRequest }
+        return try Post(content: data)
     }
 }
