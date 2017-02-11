@@ -1,0 +1,18 @@
+{
+  "name": "todo_vapor_swift",
+  "homepage": "https://github.com/thexande/swift_vapor_todo",
+  "authors": [
+    "Alexander Murphy <alex.murphy@ibotta.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
