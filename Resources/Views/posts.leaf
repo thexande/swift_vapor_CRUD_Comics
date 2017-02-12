@@ -5,7 +5,7 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <a class="navbar-brand" href="">SWIFT TODO ✅✅✅</a>
+    <a class="navbar-brand" href="">CRUD Comics</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -25,32 +25,29 @@
     </div>
 </nav>
 <div class="jumbotron">
-    <h1 class="display-3">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <h1 class="display-3">Read some comics and add one you like.</h1>
+    <p class="lead">This is a Server Side Swift web app using Leaf templating, Bootstrap 4, and PostgreSQL.</p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>Click the button below if you would like to add a comic. </p>
     <p class="lead">
-        <button type="button" class="btn btn-primary btn-large" data-toggle="modal" data-target="#()myModal">Launch demo modal</button>
+        <button type="button" class="btn btn-success btn-large" data-toggle="modal" data-target="#()myModal">Add A New Comic</button>
     </p>
 </div>
 <div class="container">
     <div class="row">
         <div class="card-columns">
+            
+
             #loop(posts, "post") {
-            <div class="card card-inverse card-primary">
+            <div class="card card-inverse card-#(post.post_color)">
                 <img class="card-img-top img-fluid" src="#(post.post_image_url)"
                     alt="Card image cap">
                 <div class="card-block">
                     <h4 class="card-title">#(post.post_title)</h4>
                     <p class="card-text">#(post.post_content)</p>
                 </div>
-                <div class="card-block">
-                    <a href="" class="card-link">Card link</a>
-                    <a href="" class="card-link">Another link</a>
-                </div>
             </div>                
-            }
-
+            }      
         
 
         </div>
