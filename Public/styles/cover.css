@@ -166,3 +166,11 @@ body {
     width: 700px;
   }
 }
+
+
+
+
+.card-inverse{
+  background-color: #000;
+  border-color: #000;
+}

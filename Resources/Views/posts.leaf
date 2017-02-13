@@ -8,7 +8,7 @@
 </nav>
 <div class="jumbotron">
     <h1 class="display-3">Read some comics, and add one you like.</h1>
-    <p class="lead">This is a Server Side Swift web app using Leaf templating, Bootstrap 4, and PostgreSQL.</p>
+    <p class="lead">This is a Server Side Swift web app using Vapor Framework, Leaf templating, Bootstrap 4, and PostgreSQL.</p>
     <hr class="my-4">
     <p>Click the button below if you would like to add a comic. </p>
     <p class="lead">
@@ -19,7 +19,7 @@
     <div class="row">
         <div class="card-columns">
             #loop(posts, "post") {
-            <div class="card card-inverse card-#(post.post_color)">
+            <div class="card card-#(post.post_color)">
                 <img class="card-img-top img-fluid" src="#(post.post_image_url)"
                     alt="Card image cap">
                 <div class="card-block">

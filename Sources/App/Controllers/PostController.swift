@@ -19,10 +19,7 @@ final class PostController: ResourceRepresentable {
     func index(request: Request) throws -> ResponseRepresentable {
         return try Post.all().makeNode().converted(to: JSON.self)
     }
-    
-    func home(request: Request) throws -> ResponseRepresentable {
-        return try drop.view.make("welcome")
-    }
+
     
     func postsPage(request: Request) throws -> ResponseRepresentable {
         let posts = try Post.all().makeNode()
@@ -42,11 +39,6 @@ final class PostController: ResourceRepresentable {
         return Resource(
             index: index,
             store: create
-//            show: show,
-//            replace: replace,
-//            modify: update,
-//            destroy: delete,
-//            clear: clear
         )
     }
 }

@@ -6,7 +6,7 @@
     <!DOCTYPE html>
     <html lang="en">
         <head>
-            <title>VAPOR TODO</title>
+            <title>CRUD Comics</title>
 	        <link rel="stylesheet" href="/styles/bootstrap.min.css">
             <link rel="stylesheet" href="/styles/cover.css">
         </head>
