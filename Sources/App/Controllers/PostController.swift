@@ -3,10 +3,17 @@ import HTTP
 
 final class PostController: ResourceRepresentable {
     func addRoutes(drop: Droplet) {
-        drop.get("/", handler: home)
-        drop.get("/all", handler: postsPage)
+        drop.get("/", handler: postsPage)
         drop.post("/post/create", handler: create)
-//        drop.get("/all", handler: index)
+        drop.get("/all", handler: index)
+        drop.get("/post/:post_id/delete", handler: deletePost)
+    }
+    
+    func deletePost(request: Request) throws -> ResponseRepresentable {
+        guard let postId = request.parameters["post_id"]?.string else { throw Abort.badRequest }
+        let post = try Post.query().filter("id", postId)
+        try post.delete()
+        return Response(redirect: "/")
     }
     
     func index(request: Request) throws -> ResponseRepresentable {
@@ -28,35 +35,8 @@ final class PostController: ResourceRepresentable {
     func create(request: Request) throws -> ResponseRepresentable {
         var post = try request.post()
         try post.save()
-        return Response(redirect: "/all")
+        return Response(redirect: "/")
     }
-//
-//    func show(request: Request, post: Post) throws -> ResponseRepresentable {
-//        return post
-//    }
-//
-//    func delete(request: Request, post: Post) throws -> ResponseRepresentable {
-//        try post.delete()
-//        return JSON([:])
-//    }
-//
-//    func clear(request: Request) throws -> ResponseRepresentable {
-//        try Post.query().delete()
-//        return JSON([])
-//    }
-//
-//    func update(request: Request, post: Post) throws -> ResponseRepresentable {
-//        let new = try request.post()
-//        var post = post
-//        post.content = new.content
-//        try post.save()
-//        return post
-//    }
-//
-//    func replace(request: Request, post: Post) throws -> ResponseRepresentable {
-//        try post.delete()
-//        return try create(request: request)
-//    }
 
     func makeResource() -> Resource<Post> {
         return Resource(
